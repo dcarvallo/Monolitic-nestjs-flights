@@ -1,11 +1,14 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { UserDTO } from './dto/user.dto';
 import { UserService } from './user.service';
+import {ApiTags, ApiOperation} from '@nestjs/swagger';
 
+@ApiTags('Users')
 @Controller('api/v1/user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
   @Post()
+  @ApiOperation({summary: 'Create user'})
   create(@Body() userDTO: UserDTO) {
     return this.userService.create(userDTO);
   }

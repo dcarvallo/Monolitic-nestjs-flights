@@ -3,7 +3,9 @@ import { get } from 'http';
 import { IPassenger } from 'src/common/interfaces/passenger.interface';
 import { PassengerDTO } from './dto/passenger.dto';
 import { PassengerService } from './passenger.service';
+import {ApiTags} from '@nestjs/swagger';
 
+@ApiTags('Passengers')
 @Controller('api/v1/passenger')
 export class PassengerController {
 
