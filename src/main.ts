@@ -4,9 +4,10 @@ import { AppModule } from './app.module';
 import { AllExceptionFilter } from './common/filter/http-exception.filter';
 import { TimeOutInterceptor } from './common/filter/interceptors/timeout.interceptor';
 import {DocumentBuilder, SwaggerModule} from '@nestjs/swagger'
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.useGlobalFilters(new AllExceptionFilter());
+  // app.useGlobalFilters(new AllExceptionFilter());
   app.useGlobalInterceptors(new TimeOutInterceptor());
   app.useGlobalPipes(new ValidationPipe());
   const options = new DocumentBuilder().setTitle('FLights API')
@@ -21,6 +22,6 @@ async function bootstrap() {
     }
   })
 
-  await app.listen(3000);
+  await app.listen(process.env.PORT || 3000);
 }
 bootstrap();
