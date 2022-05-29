@@ -13,6 +13,7 @@ async function bootstrap() {
   const options = new DocumentBuilder().setTitle('FLights API')
     .setDescription('Scheduled FLight App')
     .setVersion('1.0.0')
+    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app,options);
 
